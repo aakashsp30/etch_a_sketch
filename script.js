@@ -1,9 +1,41 @@
 const container = document.querySelector('.container');
-const gridSize = 16;
-const totalSquares = gridSize * gridSize;
+const newGridBtn = document.querySelector('#newGridBtn');
 
-for(let i = 0; i < totalSquares; i++){
-    const square = document.createElement('div');
-    square.classList.add('box');
-    container.appendChild(square);
+function createGrid(size){
+    container.innerHTML = '';
+
+    const totalSquares = size * size;
+    const squareSize = `calc(100% / ${size})`;
+
+    for(let i = 0; i < totalSquares; i++){
+        const square = document.createElement('div');
+        square.classList.add('box');
+        square.style.flex = `1 0 ${squareSize}`;
+    
+        square.addEventListener('mouseenter', () => {
+            square.classList.add('hovered');
+        })
+    
+        container.appendChild(square);
+    }
 }
+
+newGridBtn.addEventListener('click', () => {
+    let size = prompt("Enter no of squares per side (max 100):");
+
+    size = parseInt(size);
+
+    if(isNaN(size) || size < 1){
+        alert("Please enter a valid number!");
+        return;
+    }
+
+    if(size > 100){
+        alert("Maximum size is 100!");
+        return;
+    }
+
+    createGrid(size);
+});
+
+createGrid(16);
