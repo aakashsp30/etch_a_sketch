@@ -37,7 +37,3 @@ button:hover {
     box-sizing: border-box;
     border: 1px solid #ddd;
 }
-
-.box.hovered {
-    background-color: #333;
-}
