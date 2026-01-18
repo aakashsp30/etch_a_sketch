@@ -30,9 +30,9 @@ A browser-based drawing game where you sketch by hovering your mouse over a grid
 - CSS custom properties (variables)
 - DOM manipulation
 
-## Installation
+## Live Demo
 
-Just open the HTML file in your browser - no setup needed!
+[Play it here!](https://aakashsp30.github.io/etch_a_sketch/)
 
 ## Credits
 
