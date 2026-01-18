@@ -13,10 +13,22 @@ function createGrid(size){
         square.style.flex = `1 0 ${squareSize}`;
     
         square.addEventListener('mouseenter', () => {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+            if(!square.dataset.interactions){
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                square.dataset.interactions = '0';
+            }
+
+            let interactions = parseInt(square.dataset.interactions);
+            interactions++;
+            square.dataset.interactions = interactions;
+
+            const opacity = Math.min(interactions * 0.1, 1);
+
+            square.style.setProperty('--darkness', opacity);
         })
     
         container.appendChild(square);
